@@ -131,10 +131,13 @@ public class MainActivity extends AppCompatActivity {
 
         for (int i = 0; i < blocks.size(); i++) {
             List<Text.Line> lines = blocks.get(i).getLines();
+            //System.out.println(blocks.get(i).getText());
             for (int j = 0; j < lines.size(); j++) {
                 List<Text.Element> elements = lines.get(j).getElements();
+                System.out.println(lines.get(j).getText());
                 for (int k = 0; k < elements.size(); k++) {
-                    System.out.println(elements.get(k).getText());
+
+                    //System.out.println(elements.get(k).getText());
                 }
             }
         }
