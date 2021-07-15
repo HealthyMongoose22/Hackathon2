@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         List<Text.TextBlock> blocks = texts.getTextBlocks();
 
         if (blocks.size() == 0) {
-            return;
+            System.out.println("dicks");
         }
 
         for (int i = 0; i < blocks.size(); i++) {
