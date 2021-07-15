@@ -43,6 +43,9 @@ dependencies {
     implementation "androidx.camera:camera-view:1.0.0-alpha12"
     implementation "androidx.camera:camera-extensions:1.0.0-alpha12"
     implementation 'com.squareup.picasso:picasso:2.4.0'
+    implementation 'com.intuit.fuzzymatcher:fuzzy-matcher:1.0.4'
+    implementation "androidx.recyclerview:recyclerview-selection:1.1.0"
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
 }
 repositories {
     mavenCentral()
