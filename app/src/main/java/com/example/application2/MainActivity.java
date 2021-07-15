@@ -6,14 +6,17 @@ import androidx.core.content.FileProvider;
 
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -42,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView imageView;
     Uri photoU;
     Button mTextButton;
+    private ImageView mReCapture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +53,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         imageView=findViewById(R.id.imageView2);
         mTextButton=findViewById(R.id.button);
+        mReCapture=findViewById(R.id.imageView8);
+
         dispatchTakePictureIntent();
     }
 
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
         // Ensure that there's a camera activity to handle the intent
         //if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             // Create the File where the photo should go
@@ -79,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             imageView.setImageURI(photoU);
@@ -88,6 +94,12 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+        mReCapture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dispatchTakePictureIntent();
+            }
+        });
     }
 
     private File createImageFile() throws IOException {
